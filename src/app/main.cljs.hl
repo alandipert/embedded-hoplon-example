@@ -1,0 +1,12 @@
+(ns app.main)
+
+(defelem counter
+  [{:keys [init] :or {init 0}} kids]
+  (let [n (cell init)]
+    (div
+      (p (cell= (str "The count is now " n)))
+      (p (button :click #(swap! n inc) "Increment"))))) 
+
+(js/jQuery #(.append (js/jQuery "#mountpoint") (counter)))
+
+
